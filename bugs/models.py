@@ -24,3 +24,11 @@ class Bug(models.Model):
 
   def get_absolute_url(self):
     return reverse('bug_detail', kwargs={'pk': str(self.pk)})
+
+class Comment(models.Model):
+  body = models.TextField()
+  bug = models.ForeignKey(
+    Bug,
+    on_delete=models.CASCADE,
+    related_name='comments'
+  )

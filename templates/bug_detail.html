@@ -9,4 +9,9 @@
 <p>{{ bug.created }}</p>
 <p>{{ bug.priority }}</p>
 <p>{{ bug.status }}</p>
+
+{% for comment in bug.comments.all %}
+    {{ comment.body }}
+{% endfor %}
+
 {% endblock content %}
