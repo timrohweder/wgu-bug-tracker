@@ -1,0 +1,10 @@
+{% extends '_base.html' %} {% block content %} {% for bug in bug_list %}
+<a href="{% url 'bug_detail' bug.pk %}"><h2>{{ bug.title }}</h2></a>
+<p>pk: {{ bug.pk }}</p>
+<p>{{ bug.description }}</p>
+<p>{{ bug.creator }}</p>
+<p>{{ bug.assignee }}</p>
+<p>{{ bug.created }}</p>
+<p>{{ bug.priority }}</p>
+<p>{{ bug.status }}</p>
+{% endfor %} {% endblock content %}
