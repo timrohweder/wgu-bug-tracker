@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+{% block content %}
+<h1>Search</h1>
+<form class="search-form mt-2 mt-md-0" action="{% url 'bug_list' %}"
+method="get">
+  <label>Date Created (enter as mm/dd/yyyy)<input name="createdQuery" class="form-control mr-sm-2" pattern="^(((0)[0-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1])(\/)\d{4}$" type="text" placeholder="Search"
+  aria-label="Search"></label>
+  <label>Title<input name="titleQuery" class="form-control mr-sm-2" type="text" placeholder="Search"
+  aria-label="Search"></label>
+  <label>Priority<input name="priorityQuery" class="form-control mr-sm-2" type="text" placeholder="Search"
+aria-label="Search"></label>
+  <label>Assignee<input name="assigneeQuery" class="form-control mr-sm-2" type="text" placeholder="Search"
+aria-label="Search"></label>
+  <label>Status<input name="statusQuery" class="form-control mr-sm-2" type="text" placeholder="Search"
+aria-label="Search"></label>
+  <input class="btn btn-primary" type="submit" value="Search" />
+</form>
+{% endblock content %}

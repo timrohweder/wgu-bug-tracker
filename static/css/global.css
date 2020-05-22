@@ -34,3 +34,13 @@ td {
   margin-top: 50px;
   margin-bottom: 35px;
 }
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form label {
+  font-weight: 700;
+  margin-bottom: 25px;
+}
