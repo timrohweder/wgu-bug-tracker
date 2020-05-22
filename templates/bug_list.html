@@ -16,6 +16,8 @@
     <td>{{ bug.assignee|capfirst }}</td>
     <td>{{ bug.status|capfirst }}</td>
   </tr>
+  {% empty %}
+    <tr><td>No bugs in the database.</td></tr>
   {% endfor %}
   </table>
 {% endblock content %}

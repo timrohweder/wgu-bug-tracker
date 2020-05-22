@@ -1,17 +1,6 @@
-.bug-card {
-  background: #eee;
-  padding: 20px;
-  margin-bottom: 30px;
+body {
+  padding-bottom: 50px;
 }
-
-/* table {
-  border-collapse: collapse;
-}
-
-th,
-td {
-  border: 1px solid black;
-} */
 
 table {
   width: 100%;
