@@ -1,10 +1,21 @@
-{% extends '_base.html' %} {% block content %} {% for bug in bug_list %}
-<a href="{% url 'bug_detail' bug.pk %}"><h2>{{ bug.title }}</h2></a>
-<p>pk: {{ bug.pk }}</p>
-<p>{{ bug.description }}</p>
-<p>{{ bug.creator }}</p>
-<p>{{ bug.assignee }}</p>
-<p>{{ bug.created }}</p>
-<p>{{ bug.priority }}</p>
-<p>{{ bug.status }}</p>
-{% endfor %} {% endblock content %}
+{% extends '_base.html' %}
+{% block content %}
+<table>
+  <tr>
+    <th>Created</th>
+    <th>Title</th>
+    <th>Priority</th>
+    <th>Assignee</th>
+    <th>Status</th>
+  </tr>
+  {% for bug in bug_list %}
+  <tr>
+    <td>{{ bug.created|date:'m-d-y' }}</td>
+    <td><a href="{% url 'bug_detail' bug.pk %}">{{ bug.title }}</a></td>
+    <td>{{ bug.priority|capfirst }}</td>
+    <td>{{ bug.assignee|capfirst }}</td>
+    <td>{{ bug.status|capfirst }}</td>
+  </tr>
+  {% endfor %}
+  </table>
+{% endblock content %}

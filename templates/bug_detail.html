@@ -1,19 +1,27 @@
 {% extends '_base.html' %}
 
 {% block content %}
-<h2>{{ bug.title }}</h2>
-<p>pk: {{  bug.pk }}
-<p>{{ bug.description }}</p>
-<p>{{ bug.creator }}</p>
-<p>{{ bug.assignee }}</p>
-<p>{{ bug.created }}</p>
-<p>{{ bug.priority }}</p>
-<p>{{ bug.status }}</p>
+<h2 class="bug-title">{{ bug.title }}</h2>
+<p><strong class="bug-subheading">Description</strong><br>{{ bug.description }}</p>
+<p><strong class="bug-subheading">Assignee</strong><br>{{ bug.assignee|capfirst }}</p>
+<p><strong class="bug-subheading">Created</strong><br>{{ bug.created }}</p>
+<p><strong class="bug-subheading">Priority</strong><br>{{ bug.priority|capfirst }}</p>
+<p><strong class="bug-subheading">Status</strong><br>{{ bug.status|capfirst }}</p>
 
+<a class="btn btn-secondary" href="{% url 'bug_update' pk=bug.pk %}">Edit Bug</a>
+<a class="btn btn-danger" href="{% url 'bug_delete' pk=bug.pk %}">Delete Bug</a>
+
+<h2 style="margin-top: 25px;">Discussion</h2>
 {% for comment in bug.comments.all %}
-    {{ comment.body }}
+    <div class="comment">
+      <strong>{{ comment.author }} | {{ comment.created }}</strong>
+      <br><br>
+      <p>{{ comment.body }}</p>
+    </div>
+{% empty %}
+  <p>No comments yet.</p>
 {% endfor %}
 
-<a href="{% url 'add_comment' pk=bug.pk %}">Add comment</a>
+<a class="btn btn-primary" href="{% url 'add_comment' pk=bug.pk %}">Add comment</a>
 
 {% endblock content %}

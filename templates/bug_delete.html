@@ -3,6 +3,7 @@
 <form method="post">
   {% csrf_token %}
   <p>Are you sure you want to delete "{{ object }}"?</p>
-  <input type="submit" value="Confirm" />
+  <input class="btn btn-danger" type="submit" value="Delete Bug" />
+  <a href="{% url 'bug_list' %}" class="btn btn-secondary">Cancel</a>
 </form>
 {% endblock content %}

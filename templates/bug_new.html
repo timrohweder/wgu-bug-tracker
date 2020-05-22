@@ -2,9 +2,10 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h1>New Bug</h1>
+<h1>Add a Bug</h1>
 <form action="" method="post">
   {% csrf_token %} {{ form|crispy }}
-  <input type="submit" value="Save" />
+  <input class="btn btn-success" type="submit" value="Save" />
+  <a href="{% url 'bug_list' %}" class="btn btn-secondary">Cancel</a>
 </form>
 {% endblock content %}

@@ -1,3 +1,47 @@
-* {
-  color: red;
+.bug-card {
+  background: #eee;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+/* table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid black;
+} */
+
+table {
+  width: 100%;
+}
+
+th {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  border-right: 1px solid #777;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.comment {
+  background: #eee;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.bug-subheading {
+  border-bottom: #777 2px solid;
+  padding-bottom: 3px;
+  display: inline-block;
+}
+
+.bug-title {
+  margin-top: 50px;
+  margin-bottom: 35px;
 }

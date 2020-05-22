@@ -5,7 +5,7 @@ from django.urls import reverse
 
 class Bug(models.Model):
   PRIORITY_CHOICES = (('low', 'Low'), ('medium', 'Medium'), ('high', 'High'))
-  STATUS_CHOICES = (('deferred', 'Deferred'), ('in_progress', 'In Progress'), ('resolved', 'Resolved'))
+  STATUS_CHOICES = (('Deferred', 'Deferred'), ('In Progress', 'In Progress'), ('Resolved', 'Resolved'))
 
   title = models.CharField(max_length=300)
   description = models.TextField()
