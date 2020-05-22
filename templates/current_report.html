@@ -1,0 +1,9 @@
+{% extends '_base.html' %}
+{% block content %}
+<a href="{% url 'resolved_report' %}"><button class="btn btn-primary">Bugs Resolved By Year</button></a>
+<a href="{% url 'current_report' %}"><button class="btn btn-secondary">Current Bugs by Status</button></a>
+<a href="{% url 'assignee_report' %}"><button class="btn btn-success">Current Bugs by Assignee </button></a>
+<h1 class="report-title">Current Bugs by Status Report</h1>
+<h5>Report Generated: {% now "jS F Y H:i" %} (UTC)</h5>
+{% endblock content %}
+]

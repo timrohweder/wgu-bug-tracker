@@ -6,6 +6,18 @@ from django.http import HttpResponseRedirect
 from .forms import CommentForm
 from django.db.models import Q
 
+class ResolvedReportView(TemplateView):
+  template_name = 'resolved_report.html'
+
+class CurrentBugsReportView(TemplateView):
+  template_name = 'current_report.html'
+
+class AssigneeBugsReportView(TemplateView):
+  template_name = 'assignee_report.html'
+
+class ReportsView(TemplateView):
+  template_name = 'bug_reports.html'
+
 class SearchView(TemplateView):
   template_name = 'bug_search.html'
 
