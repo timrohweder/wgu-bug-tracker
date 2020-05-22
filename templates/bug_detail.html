@@ -14,4 +14,6 @@
     {{ comment.body }}
 {% endfor %}
 
+<a href="{% url 'add_comment' pk=bug.pk %}">Add comment</a>
+
 {% endblock content %}

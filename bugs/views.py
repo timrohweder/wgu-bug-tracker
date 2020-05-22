@@ -1,7 +1,9 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from .models import Bug
 from django.http import HttpResponseRedirect
+from .forms import CommentForm
 
 class BugListView(ListView):
   model = Bug
@@ -28,3 +30,16 @@ class BugDeleteView(DeleteView):
     model = Bug
     success_url = reverse_lazy('bug_list')
     template_name = 'bug_delete.html'
+
+def add_comment(request, pk):
+    bug = get_object_or_404(Bug, pk=pk)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.bug = bug
+            comment.save()
+            return redirect('bug_detail', pk=bug.pk)
+    else:
+        form = CommentForm()
+    return render(request, 'add_comment.html', {'form': form})
