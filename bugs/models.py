@@ -27,8 +27,14 @@ class Bug(models.Model):
 
 class Comment(models.Model):
   body = models.TextField()
+  created = models.DateTimeField(default=timezone.now)
   bug = models.ForeignKey(
     Bug,
     on_delete=models.CASCADE,
     related_name='comments'
+  )
+  author = models.ForeignKey(
+    get_user_model(),
+    on_delete=models.SET_NULL,
+    null=True
   )

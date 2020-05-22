@@ -38,6 +38,7 @@ def add_comment(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.bug = bug
+            comment.author = request.user
             comment.save()
             return redirect('bug_detail', pk=bug.pk)
     else:
