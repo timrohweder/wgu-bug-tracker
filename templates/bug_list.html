@@ -1,23 +1,39 @@
-{% extends '_base.html' %}
-{% block content %}
-<table>
-  <tr>
-    <th>Created</th>
-    <th>Title</th>
-    <th>Priority</th>
-    <th>Assignee</th>
-    <th>Status</th>
-  </tr>
-  {% for bug in bug_list %}
-  <tr>
-    <td>{{ bug.created|date:'m-d-y' }}</td>
-    <td><a href="{% url 'bug_detail' bug.pk %}">{{ bug.title }}</a></td>
-    <td>{{ bug.priority|capfirst }}</td>
-    <td>{{ bug.assignee|capfirst }}</td>
-    <td>{{ bug.status|capfirst }}</td>
-  </tr>
-  {% empty %}
-    <tr><td>No bugs in the database.</td></tr>
-  {% endfor %}
+{% extends '_base.html' %} {% block content %}
+{% if reportType %}
+   <h2>{{ reportType }} Report</h2>
+   <h5>Report Generated: {% now "jS F Y H:i" %} (UTC)</h5>
+   <a class="btn btn-primary" href="{% url 'bug_list' %}">Show All Bugs</a>
+   <a class="btn btn-secondary" href="{% url 'reports' %}">Back to Reports</a>
+   <br><br>
+{% elif isSearch %}
+   <h2>Search Results</h2>
+   <a class="btn btn-primary" href="{% url 'bug_list' %}">Clear Search</a>
+   <a class="btn btn-secondary" href="{% url 'search' %}">Return to Search Form</a>
+   <br><br>
+{% else %}
+  <h2>All Bugs</h2>
+  <br />
+{% endif %}
+{% if not bug_list %}
+  <p>No bugs found.</p>
+  {% else %}
+  <table>
+    <tr>
+      <th>Created</th>
+      <th>Title</th>
+      <th>Priority</th>
+      <th>Assignee</th>
+      <th>Status</th>
+    </tr>
+    {% for bug in bug_list %}
+    <tr>
+      <td>{{ bug.created|date:'m-d-y' }}</td>
+      <td><a href="{% url 'bug_detail' bug.pk %}">{{ bug.title }}</a></td>
+      <td>{{ bug.priority|capfirst }}</td>
+      <td>{{ bug.assignee|capfirst }}</td>
+      <td>{{ bug.status|capfirst }}</td>
+    </tr>
+    {% endfor %}
   </table>
+{% endif %}
 {% endblock content %}

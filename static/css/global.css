@@ -48,3 +48,9 @@ td {
 .report-title {
   margin-top: 35px;
 }
+
+.report-button {
+  margin-top: 15px;
+  margin-right: 3%;
+  width: 30%;
+}

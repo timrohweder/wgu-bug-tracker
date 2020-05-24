@@ -1,8 +1,36 @@
 {% extends '_base.html' %}
 {% block content %}
-<a href="{% url 'resolved_report' %}"><button class="btn btn-primary">Bugs Resolved By Year</button></a>
-<a href="{% url 'current_report' %}"><button class="btn btn-secondary">Current Bugs by Status</button></a>
-<a href="{% url 'assignee_report' %}"><button class="btn btn-success">Current Bugs by Assignee </button></a>
-<h1 class="report-title">Choose a Report To Generate</h1>
+<h1 class="report-title">Bug Reports</h1>
+<h2>Bug Reports by Year</h2>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2020">2020</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2019">2019</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2018">2018</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2017">2017</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2016">2016</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2015">2015</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2014">2014</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2013">2013</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2012">2012</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2011">2011</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2010">2010</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2009">2009</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2008">2008</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2007">2007</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2006">2006</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2005">2005</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2004">2004</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2003">2003</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2002">2002</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2001">2001</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?yearQuery=2000">2000</a>
+<br /><br />
+<h2>Bug Reports by Status</h2>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?statusQuery=Deferred&reportQuery=True">Deferred</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?statusQuery=In+Progress&reportQuery=True">In Progress</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?statusQuery=Resolved&reportQuery=True">Resolved</a>
+<br /><br />
+<h2>Bug Reports by Priority</h2>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?priorityQuery=Low&reportQuery=True">Low</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?priorityQuery=Medium&reportQuery=True">Medium</a>
+<a class="btn btn-primary report-button" href="{% url 'bug_list' %}?priorityQuery=High&reportQuery=True">High</a>
 {% endblock content %}
-]

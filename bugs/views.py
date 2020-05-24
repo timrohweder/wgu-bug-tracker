@@ -6,15 +6,6 @@ from django.http import HttpResponseRedirect
 from .forms import CommentForm
 from django.db.models import Q
 
-class ResolvedReportView(TemplateView):
-  template_name = 'resolved_report.html'
-
-class CurrentBugsReportView(TemplateView):
-  template_name = 'current_report.html'
-
-class AssigneeBugsReportView(TemplateView):
-  template_name = 'assignee_report.html'
-
 class ReportsView(TemplateView):
   template_name = 'bug_reports.html'
 
@@ -25,9 +16,15 @@ class BugListView(ListView):
   model = Bug
   context_object_name = 'bug_list'
   template_name = 'bug_list.html'
+  extra_context = {}
 
   def get_queryset(self):
+    self.extra_context = {}
     results = Bug.objects.all()
+
+    isSearch = self.request.GET.get('isSearch')
+    if isSearch == 'True':
+      self.extra_context["isSearch"] = True
 
     createdQuery = self.request.GET.get('createdQuery')
     if createdQuery is not None and createdQuery != '':
@@ -50,6 +47,9 @@ class BugListView(ListView):
       results = results.filter(
           Q(priority__icontains=priorityQuery)
       )
+      reportQuery = self.request.GET.get('reportQuery')
+      if reportQuery == 'True':
+        self.extra_context["reportType"] = priorityQuery
 
     assigneeQuery = self.request.GET.get('assigneeQuery')
     if assigneeQuery is not None and assigneeQuery != '':
@@ -61,6 +61,16 @@ class BugListView(ListView):
     if statusQuery is not None and statusQuery != '':
       results = results.filter(
           Q(status__icontains=statusQuery)
+      )
+      reportQuery = self.request.GET.get('reportQuery')
+      if reportQuery == 'True':
+        self.extra_context["reportType"] = statusQuery
+
+    yearQuery = self.request.GET.get('yearQuery')
+    if yearQuery is not None and yearQuery != '':
+      self.extra_context["reportType"] = yearQuery
+      results = results.filter(
+          Q(created__year=yearQuery)
       )
 
     return results
