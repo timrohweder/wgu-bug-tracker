@@ -97,7 +97,11 @@ class BugDeleteView(DeleteView):
     template_name = 'bug_delete.html'
 
 def add_comment(request, pk):
-    bug = get_object_or_404(Bug, pk=pk)
+    # bug = get_object_or_404(Bug, pk=pk)
+    try:
+      bug = Bug.objects.get(pk=pk)
+    except Bug.DoesNotExist:
+        raise Http404("Sorry, we couldn't find that bug.")
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
