@@ -3,6 +3,7 @@
 <h1>Search</h1>
 <form class="search-form mt-2 mt-md-0" action="{% url 'bug_list' %}"
 method="get">
+  {% csrf_token %}
   <label>Date Created (enter as mm/dd/yyyy)<input name="createdQuery" class="form-control mr-sm-2" pattern="^(((0)[0-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1])(\/)\d{4}$" type="text" placeholder="Search"
   aria-label="Search"></label>
   <label>Title<input name="titleQuery" class="form-control mr-sm-2" type="text" placeholder="Search"
