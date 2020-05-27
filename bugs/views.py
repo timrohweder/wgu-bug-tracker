@@ -5,14 +5,16 @@ from .models import Bug
 from django.http import HttpResponseRedirect
 from .forms import CommentForm
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
-class ReportsView(TemplateView):
+class ReportsView(LoginRequiredMixin, TemplateView):
   template_name = 'bug_reports.html'
 
-class SearchView(TemplateView):
+class SearchView(LoginRequiredMixin, TemplateView):
   template_name = 'bug_search.html'
 
-class BugListView(ListView):
+class BugListView(LoginRequiredMixin, ListView):
   model = Bug
   context_object_name = 'bug_list'
   template_name = 'bug_list.html'
@@ -75,27 +77,28 @@ class BugListView(ListView):
 
     return results
 
-class BugDetailView(DetailView):
+class BugDetailView(LoginRequiredMixin, DetailView):
   model = Bug
   context_object_name = 'bug'
   template_name = 'bug_detail.html'
 
-class BugCreateView(CreateView):
+class BugCreateView(LoginRequiredMixin, CreateView):
   model = Bug
   fields=['title', 'description', 'assignee', 'priority', 'status']
   template_name = 'bug_new.html'
   success_url = reverse_lazy('bug_list')
 
-class BugUpdateView(UpdateView):
+class BugUpdateView(LoginRequiredMixin, UpdateView):
     model = Bug
     fields = ['title', 'description', 'assignee', 'priority', 'status']
     template_name = 'bug_update.html'
 
-class BugDeleteView(DeleteView):
+class BugDeleteView(LoginRequiredMixin, DeleteView):
     model = Bug
     success_url = reverse_lazy('bug_list')
     template_name = 'bug_delete.html'
 
+@login_required(redirect_field_name='my_redirect_field')
 def add_comment(request, pk):
     # bug = get_object_or_404(Bug, pk=pk)
     try:
