@@ -1,0 +1,56 @@
+body {
+  padding-bottom: 50px;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  border-right: 1px solid #777;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.comment {
+  background: #eee;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.bug-subheading {
+  border-bottom: #777 2px solid;
+  padding-bottom: 3px;
+  display: inline-block;
+}
+
+.bug-title {
+  margin-top: 50px;
+  margin-bottom: 35px;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form label {
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.report-title {
+  margin-top: 35px;
+}
+
+.report-button {
+  margin-top: 15px;
+  margin-right: 3%;
+  width: 30%;
+}
