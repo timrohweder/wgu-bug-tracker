@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get('DEBUG', default=0))
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['https://wgu-bugtracker-project.herokuapp.com/', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -165,6 +165,7 @@ if ENVIRONMENT == 'production':
   SECURE_HSTS_PRELOAD = True
   SECURE_CONTENT_TYPE_NOSNIFF = True
   SESSION_COOKIE_SECURE = True
+  SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
