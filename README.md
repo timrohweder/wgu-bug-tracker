@@ -2,7 +2,7 @@
 
 - This is a Django app for tracking and discussing software bugs
 - It was created for WGU's C868 class
-- Live site: https://wgu-bugtracker-project.herokuapp.com/
+- Live site: https://wgu-bugtracker-project.herokuapp.com/ **Note:** It's hosted on Heroku's free plan, so it may take 30 seconds or so to initially "wake up" and load.
 
 ## How to Install and Run Locally
 
